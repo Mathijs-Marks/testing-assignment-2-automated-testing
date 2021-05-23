@@ -6,7 +6,7 @@ stages:
 unit-test:
   script:
     - dir 
-    - C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath . -runTests -testPlatform playmode -logFile -testResults .\unit-tests.xml | Out-Default
+    - C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath . -runTests -logFile .\unitTests.log -testResults .\unit-tests.xml | Out-Default
   after_script:
       - '[xml]$xml = Get-Content -PATH .\unitTests.xml'
       - '$xml.SelectNodes("//test-case") | Format-Table -AutoSize -Property result, name'
