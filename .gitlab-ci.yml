@@ -4,12 +4,8 @@ stages:
   - deploy
 
 unit-test:
-  script: 'C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity \
-    -batchmode \
-    -projectPath . \
-    -runTests -testPlatform editmode \
-    -logFile \
-    -testResults ./unit-tests.xml'
+  script: 
+    'C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath . -runTests -testPlatform editmode -logFile -testResults ./unit-tests.xml'
   stage: test
 
 unity-build:
