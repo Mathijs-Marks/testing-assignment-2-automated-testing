@@ -4,13 +4,18 @@ stages:
   - deploy
 
 unit-test:
+  script: 'C:\Program Files\Unity\2020.1.6f1\Editor \
+    -batchmode \
+    -projectPath . \
+    -runTests -testPlatform editmode \
+    -logFile \
+    -testResults ./unit-tests.xml'
   stage: test
-  script: echo 'Testing...'
 
 unity-build:
+  script: "echo 'Building...'"
   stage: build
-  script: echo 'Building...'
 
 playstore:
+  script: "echo 'Deploying...'"
   stage: deploy
-  script: echo 'Deploying...'
