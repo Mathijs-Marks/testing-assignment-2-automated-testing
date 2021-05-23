@@ -6,6 +6,6 @@ public class SomeGreenTest : MonoBehaviour
     [Test]
     public void SomeGreenTestPassing()
     {
-        Assert.Fail();
+        Assert.Pass();
     }
 }
