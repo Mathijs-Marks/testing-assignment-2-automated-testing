@@ -6,7 +6,7 @@ stages:
 unit-test:
   script:
     - dir 
-    - C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath . -runTests -logFile .\unitTests.log -testResults .\unit-tests.xml | Out-Default
+    - C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath .\testing-assignment-2-automated-testing -runTests -logFile .\unitTests.log -testResults .\unit-tests.xml | Out-Default
   stage: test
 
 unity-build:
