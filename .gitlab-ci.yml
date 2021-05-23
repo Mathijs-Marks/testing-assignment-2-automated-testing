@@ -5,7 +5,7 @@ stages:
 
 unit-test:
   script: 
-    C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath . -runTests -testPlatform playmode -logFile -testResults ./unit-tests.xml
+    C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath ./testing-assignment-2-automated-testing -runTests -testPlatform playmode -logFile -testResults ./unit-tests.xml
   stage: test
 
 unity-build:
