@@ -12,7 +12,7 @@ unit-test:
   stage: test
 
 unity-build:
-  script: C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath . -buildWindowsPlayer C:\GitLabTestBuild\assignment-2-automated-testing.exe -logfile C:\GitLabTestBuild\buildlog.log -quit | Out-Default
+  script: C:\"Program Files"\Unity\2020.1.6f1\Editor\Unity.exe -batchmode -projectPath . -buildWindowsPlayer .\Builds\assignment-2-automated-testing.exe -logfile .\Builds\buildlog.log -quit | Out-Default
   stage: build
 
 playstore:
