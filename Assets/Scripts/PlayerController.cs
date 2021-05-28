@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveDistance = 1;
     [SerializeField] private int playerPositionZ = 1;
     [SerializeField] private int playerPositionY = 1;
+    private float jumpTimer = 0f;
+    private float jumpCooldown = 1f;
 
     // Start is called before the first frame update
     private void Start()
@@ -35,10 +37,17 @@ public class PlayerController : MonoBehaviour
             MoveRight();
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (jumpTimer > 0f)
+        {
+            jumpTimer -= Time.deltaTime;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             MoveJump();
+            jumpTimer = jumpCooldown;
         }
+
+
     }
 
     private void MoveForward()
@@ -73,6 +82,6 @@ public class PlayerController : MonoBehaviour
 
     public void MoveJump()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+        rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
     }
 }
