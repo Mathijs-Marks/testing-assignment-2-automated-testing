@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
         // Starts the timer automatically.
         countDownTime = 3f;
         timerIsRunning = true;
+
+        ReferenceManager.Player.IsControllable = false;
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Game started!");
                 countDownTime = 0;
                 timerIsRunning = false;
+                ReferenceManager.Player.IsControllable = true;
             }
         }
     }
