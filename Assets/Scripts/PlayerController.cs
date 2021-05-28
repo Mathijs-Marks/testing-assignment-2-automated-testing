@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space))
         {
             MoveJump();
+            Debug.Log("I'm jumping");
             jumpTimer = jumpCooldown;
         }
 
@@ -78,10 +79,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
     public void MoveJump()
     {
         rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Obstacle")
+        {
+            Debug.Log("You done fucked up");
+        }
     }
 }
