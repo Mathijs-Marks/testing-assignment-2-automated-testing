@@ -9,6 +9,7 @@ public class ObstacleCollision : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<PlayerController>().TakeDamage();
+            Destroy(gameObject);
         }
     }
 }
