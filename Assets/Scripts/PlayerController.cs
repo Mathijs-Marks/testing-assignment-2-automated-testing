@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
 
     private Rigidbody rigidbody; // Store a reference to the RigidBody required to use 3D physics.
-    private Vector3 movement; // Vector3 variable to store the player's movement.
-    [SerializeField] private float moveSpeed = 0.5f; // Floating point variable to store the player's movement speed.
-    [SerializeField] private float jumpPower = 1f;
+    [SerializeField] private float moveSpeed = 0.01f; // Floating point variable to store the player's movement speed.
+    [SerializeField] private float jumpPower = 5f;
     [SerializeField] private float moveDistance = 1;
     [SerializeField] private int playerPositionZ = 1;
     [SerializeField] private int playerPositionY = 1;
     private float jumpTimer = 0f;
     private float jumpCooldown = 1f;
+    private int health;
 
     // Start is called before the first frame update
     private void Start()
     {
         // Get and store a reference to the RigidBody component so that we can access it.
         rigidbody = GetComponent<Rigidbody>();
+        health = 3;
     }
 
     // Update is called once per frame
@@ -89,6 +91,17 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Obstacle")
         {
             Debug.Log("You done fucked up");
+        }
+    }
+
+    public void TakeDamage()
+    {
+        health--;
+
+        if (health <= 0)
+        {
+            Debug.Log("Game Over");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
