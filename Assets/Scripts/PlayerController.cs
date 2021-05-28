@@ -7,18 +7,22 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidbody; // Store a reference to the RigidBody required to use 3D physics.
     private Vector3 movement; // Vector3 variable to store the player's movement.
-    [SerializeField] private float moveSpeed = 1f; // Floating point variable to store the player's movement speed.
+    [SerializeField] private float moveSpeed = 0.5f; // Floating point variable to store the player's movement speed.
+    [SerializeField] private float moveDistance = 1;
+    [SerializeField] private int playerPosition = 1;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // Get and store a reference to the RigidBody component so that we can access it.
         rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
+        MoveForward();
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             MoveLeft();
@@ -35,14 +39,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void MoveForward()
+    {
+        // Move the player along the positive X axis.
+        transform.Translate(moveSpeed, 0, 0);
+    }
+
     public void MoveLeft()
     {
-        transform.Translate(0, 0, 1);
+        if (playerPosition < 2)
+        {
+            // Move the player along the positive Z axis.
+            transform.Translate(0, 0, moveDistance);
+            // Increment the player position.
+            playerPosition++;
+        }
     }
 
     public void MoveRight()
     {
-        transform.Translate(0, 0, -1);
+        if (playerPosition > 0)
+        {
+            // Move the player along the positive Z axis.
+            transform.Translate(0, 0, -moveDistance);
+            // Decrement the player position.
+            playerPosition--;
+        }
     }
 
 
