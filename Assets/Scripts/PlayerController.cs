@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbody; // Store a reference to the RigidBody required to use 3D physics.
     private Vector3 movement; // Vector3 variable to store the player's movement.
     [SerializeField] private float moveSpeed = 0.5f; // Floating point variable to store the player's movement speed.
+    [SerializeField] private float jumpPower = 1f;
     [SerializeField] private float moveDistance = 1;
-    [SerializeField] private int playerPosition = 1;
+    [SerializeField] private int playerPositionZ = 1;
+    [SerializeField] private int playerPositionY = 1;
 
     // Start is called before the first frame update
     private void Start()
@@ -47,23 +49,23 @@ public class PlayerController : MonoBehaviour
 
     public void MoveLeft()
     {
-        if (playerPosition < 2)
+        if (playerPositionZ < 2)
         {
             // Move the player along the positive Z axis.
             transform.Translate(0, 0, moveDistance);
             // Increment the player position.
-            playerPosition++;
+            playerPositionZ++;
         }
     }
 
     public void MoveRight()
     {
-        if (playerPosition > 0)
+        if (playerPositionZ > 0)
         {
             // Move the player along the positive Z axis.
             transform.Translate(0, 0, -moveDistance);
             // Decrement the player position.
-            playerPosition--;
+            playerPositionZ--;
         }
     }
 
@@ -71,6 +73,6 @@ public class PlayerController : MonoBehaviour
 
     public void MoveJump()
     {
-
+        GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
     }
 }

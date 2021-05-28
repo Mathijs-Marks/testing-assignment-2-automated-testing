@@ -158,8 +158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.01
+  jumpPower: 5
   moveDistance: 1
-  playerPosition: 1
+  playerPositionZ: 1
+  playerPositionY: 1
 --- !u!54 &7291895
 Rigidbody:
   m_ObjectHideFlags: 0
