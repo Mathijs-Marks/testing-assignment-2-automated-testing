@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
         set { isControllable = value; }
     }
 
+    public bool IsAlive
+    {
+        get { return isAlive; }
+        set { isAlive = value; }
+    }
+
     public int Coins
     {
         get { return coins; }
@@ -25,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidbody; // Store a reference to the RigidBody required to use 3D physics.
     private bool isControllable;
+    private bool isAlive;
     [SerializeField] private int coins;
 
     #endregion
@@ -150,8 +157,7 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("Game Over");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            isAlive = false;
         }
 
         StartCoroutine(SlowMovement());

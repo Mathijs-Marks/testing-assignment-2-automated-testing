@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public float countDownTime;
     public bool timerIsRunning = false;
+
+    [SerializeField] private GameObject gameOverScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +18,7 @@ public class GameManager : MonoBehaviour
         countDownTime = 3f;
         timerIsRunning = true;
 
+        ReferenceManager.Player.IsAlive = true;
         ReferenceManager.Player.IsControllable = false;
     }
 
@@ -33,6 +38,27 @@ public class GameManager : MonoBehaviour
                 timerIsRunning = false;
                 ReferenceManager.Player.IsControllable = true;
             }
+        }
+
+        if (ReferenceManager.Player.IsAlive)
+        {
+            gameOverScreen.SetActive(false);
+        }
+        else
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("Game Over");
+        ReferenceManager.Player.IsControllable = false;
+        gameOverScreen.SetActive(true);
+
+        if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
