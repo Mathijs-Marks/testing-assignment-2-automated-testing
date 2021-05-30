@@ -53,8 +53,8 @@ public class PlayerController : MonoBehaviour
 
     #region General Values
 
-    private Rigidbody rigidbody; // Store a reference to the RigidBody required to use 3D physics.
-    private bool isControllable;
+    private Rigidbody rigidbody; 
+    private bool isControllable; 
     private bool isAlive;
     private int coins;
     private int score;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     #region Movement Values
 
-    private float moveSpeed; // Floating point variable to store the player's movement speed.
+    private float moveSpeed; 
     [SerializeField] private float jumpPower = 5f;
     [SerializeField] private float moveDistance = 1f;
     [SerializeField] private int playerPositionZ = 1;
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
+    // Used to easily access the PlayerController script in other scripts.
     private void Awake()
     {
         ReferenceManager.Player = this;
@@ -118,8 +119,10 @@ public class PlayerController : MonoBehaviour
         CalculateDistanceRun();
         CalculateScore();
 
+        // Only execute the code below when the player is controllable.
         if (isControllable)
         {
+            // The player will always move forward.
             MoveForward();
 
             if (Input.GetKeyDown(KeyCode.A))
@@ -132,6 +135,7 @@ public class PlayerController : MonoBehaviour
                 MoveRight();
             }
 
+            // To prevent spamming the jump button, a cooldown timer is used.
             if (jumpTimer > 0f)
             {
                 jumpTimer -= Time.deltaTime;
@@ -149,6 +153,10 @@ public class PlayerController : MonoBehaviour
         transform.Translate(moveSpeed, 0, 0);
     }
 
+    /// <summary>
+    /// Because there are three lanes in the level, the player will only be able to move either left or right two times in a row.
+    /// We can use that to determine the boundaries of the running lane, by making the left boundary 2, and the right boundary 0.
+    /// </summary>
     public void MoveLeft()
     {
         if (playerPositionZ < 2)
@@ -173,6 +181,8 @@ public class PlayerController : MonoBehaviour
 
     public void MoveJump()
     {
+        // The rigidbody of the player gets a little boost upwards.
+        // After that, the player falls back down and the cooldown timer starts.
         rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         jumpTimer = jumpCooldown;
     }
