@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject gameInformation;
+    [SerializeField] private Text score;
+    [SerializeField] private Text distanceRun;
+    [SerializeField] private Text health;
+    [SerializeField] private Text coins;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        UpdateUI();
+
         if (timerIsRunning)
         {
             if (countDownTime > 0)
@@ -61,5 +68,13 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void UpdateUI()
+    {
+        score.text = "Score: \n" + ReferenceManager.Player.Score;
+        distanceRun.text = "Distance \n" + ReferenceManager.Player.DistanceRun;
+        health.text = "Health: " + ReferenceManager.Player.Health;
+        coins.text = "Coins: " + ReferenceManager.Player.Coins;
     }
 }

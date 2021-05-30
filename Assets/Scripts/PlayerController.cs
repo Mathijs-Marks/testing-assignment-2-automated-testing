@@ -25,6 +25,24 @@ public class PlayerController : MonoBehaviour
         set { coins = value; }
     }
 
+    public float Score
+    {
+        get { return score; }
+        set { score = value; }
+    }
+
+    public float DistanceRun
+    {
+        get { return distanceRun; }
+        set { distanceRun = value; }
+    }
+
+    public int Health
+    {
+        get { return health; }
+        set { health = value; }
+    }
+
     #endregion
 
     #region General Values
@@ -32,7 +50,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbody; // Store a reference to the RigidBody required to use 3D physics.
     private bool isControllable;
     private bool isAlive;
-    [SerializeField] private int coins;
+    private int coins;
+    private float score;
+
 
     #endregion
 
@@ -43,6 +63,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveDistance = 1f;
     [SerializeField] private int playerPositionZ = 1;
     [SerializeField] private int playerPositionY = 1;
+    private float startPosition;
+    private float currentPosition;
+    private float distanceRun;
 
     #endregion
 
@@ -78,11 +101,16 @@ public class PlayerController : MonoBehaviour
         coins = 0;
         slowTimer = slowCooldown;
         moveSpeed = moveSpeedNormal;
+        startPosition = transform.position.x;
     }
 
     // Update is called once per frame
     private void Update()
     {
+
+        CalculateDistanceRun();
+        CalculateScore();
+
         if (isControllable)
         {
             MoveForward();
@@ -168,5 +196,15 @@ public class PlayerController : MonoBehaviour
         moveSpeed = moveSpeedSlowed;
         yield return new WaitForSeconds(0.5f);
         moveSpeed = moveSpeedNormal;
+    }
+
+    private void CalculateDistanceRun()
+    {
+        distanceRun = startPosition + transform.position.x;
+    }
+
+    private void CalculateScore()
+    {
+        score = coins + (distanceRun / 4);
     }
 }
