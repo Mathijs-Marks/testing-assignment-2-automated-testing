@@ -28,15 +28,19 @@ namespace Tests
 
             // ACT
             ReferenceManager.Player.MoveLeft();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(5.6f);
             ReferenceManager.Player.MoveRight();
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(0.4f);
             ReferenceManager.Player.MoveJump();
             yield return new WaitForSeconds(3);
+            ReferenceManager.Player.MoveLeft();
+            yield return new WaitForSeconds(3f);
+            ReferenceManager.Player.MoveRight();
+            yield return new WaitForSeconds(1.5f);
             ReferenceManager.Player.MoveJump();
-            yield return new WaitForSeconds(3);
-            ReferenceManager.Player.MoveJump();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.7f);
+            ReferenceManager.Player.MoveLeft();
+            yield return new WaitForSeconds(6);
 
 
             // ASSERT
@@ -57,29 +61,25 @@ namespace Tests
 
             // ACT
             ReferenceManager.Player.MoveLeft();
-            yield return new WaitForSeconds(3.8f);
+            yield return new WaitForSeconds(4.6f);
             ReferenceManager.Player.MoveRight();
             yield return new WaitForSeconds(0.1f);
             ReferenceManager.Player.MoveRight();
+            yield return new WaitForSeconds(2f);
+            ReferenceManager.Player.MoveLeft();
+            yield return new WaitForSeconds(1.8f);
+            ReferenceManager.Player.MoveLeft();
+            yield return new WaitForSeconds(2.45f);
+            ReferenceManager.Player.MoveRight();
+            yield return new WaitForSeconds(0.3f);
+            ReferenceManager.Player.MoveRight();
+            yield return new WaitForSeconds(2.5f);
+            ReferenceManager.Player.MoveLeft();
+            yield return new WaitForSeconds(0.6f);
+            ReferenceManager.Player.MoveJump();
             yield return new WaitForSeconds(1.5f);
             ReferenceManager.Player.MoveLeft();
-            yield return new WaitForSeconds(2.2f);
-            ReferenceManager.Player.MoveLeft();
-            yield return new WaitForSeconds(1f);
-            ReferenceManager.Player.MoveJump();
-            yield return new WaitForSeconds(1.8f);
-            ReferenceManager.Player.MoveRight();
-            yield return new WaitForSeconds(0.2f);
-            ReferenceManager.Player.MoveRight();
-            yield return new WaitForSeconds(1);
-            ReferenceManager.Player.MoveLeft();
-            yield return new WaitForSeconds(0.5f);
-            ReferenceManager.Player.MoveJump();
-            yield return new WaitForSeconds(1.2f);
-            ReferenceManager.Player.MoveLeft();
-            yield return new WaitForSeconds(3);
-            ReferenceManager.Player.MoveJump();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4.5f);
 
             // ASSERT
             Assert.True(ReferenceManager.Player.Coins == 100);

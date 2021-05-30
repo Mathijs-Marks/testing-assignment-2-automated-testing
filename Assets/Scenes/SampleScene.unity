@@ -161,8 +161,8 @@ MonoBehaviour:
   moveDistance: 1
   playerPositionZ: 1
   playerPositionY: 1
-  moveSpeedNormal: 0.01
-  moveSpeedSlowed: 0.001
+  moveSpeedNormal: 0.1
+  moveSpeedSlowed: 0.01
 --- !u!54 &7291895
 Rigidbody:
   m_ObjectHideFlags: 0

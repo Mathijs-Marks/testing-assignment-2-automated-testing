@@ -112,6 +112,15 @@ public class PlayerController : MonoBehaviour
         startPosition = transform.position.x;
     }
 
+    private void FixedUpdate()
+    {
+        if (isControllable)
+        {
+            // The player will always move forward.
+            MoveForward();
+        }
+    }
+    
     // Update is called once per frame
     private void Update()
     {
@@ -122,8 +131,8 @@ public class PlayerController : MonoBehaviour
         // Only execute the code below when the player is controllable.
         if (isControllable)
         {
-            // The player will always move forward.
-            MoveForward();
+            //// The player will always move forward.
+            //MoveForward();
 
             if (Input.GetKeyDown(KeyCode.A))
             {

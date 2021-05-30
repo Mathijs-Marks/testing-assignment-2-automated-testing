@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Game started!");
                 countDownTime = 0;
                 timerIsRunning = false;
                 ReferenceManager.Player.IsControllable = true;
@@ -71,7 +70,6 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Game Over");
         ReferenceManager.Player.IsControllable = false;
         gameOverScreen.SetActive(true);
 
@@ -83,7 +81,6 @@ public class GameManager : MonoBehaviour
 
     private void FinishGame()
     {
-        Debug.Log("Game Won");
         ReferenceManager.Player.IsControllable = false;
         gameFinishedScreen.SetActive(true);
 
