@@ -20,7 +20,7 @@ public class CoinController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            ReferenceManager.Player.Coins++;
+            ReferenceManager.Player.Coins += 10;
             Destroy(gameObject);
         }
     }

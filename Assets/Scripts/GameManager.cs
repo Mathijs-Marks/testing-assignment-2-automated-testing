@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject gameInformation;
+    [SerializeField] private GameObject gameFinishedScreen;
     [SerializeField] private Text score;
     [SerializeField] private Text distanceRun;
     [SerializeField] private Text health;
@@ -56,6 +57,16 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+
+        if (ReferenceManager.Player.HasWon)
+        {
+            
+            FinishGame();
+        }
+        else
+        {
+            gameFinishedScreen.SetActive(false);
+        }
     }
 
     private void GameOver()
@@ -68,6 +79,19 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void FinishGame()
+    {
+        Debug.Log("Game Won");
+        ReferenceManager.Player.IsControllable = false;
+        gameFinishedScreen.SetActive(true);
+
+        if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 
     private void UpdateUI()

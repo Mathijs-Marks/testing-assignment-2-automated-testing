@@ -25,13 +25,13 @@ public class PlayerController : MonoBehaviour
         set { coins = value; }
     }
 
-    public float Score
+    public int Score
     {
         get { return score; }
         set { score = value; }
     }
 
-    public float DistanceRun
+    public int DistanceRun
     {
         get { return distanceRun; }
         set { distanceRun = value; }
@@ -43,6 +43,12 @@ public class PlayerController : MonoBehaviour
         set { health = value; }
     }
 
+    public bool HasWon
+    {
+        get { return hasWon; }
+        set { hasWon = value; }
+    }
+
     #endregion
 
     #region General Values
@@ -51,7 +57,8 @@ public class PlayerController : MonoBehaviour
     private bool isControllable;
     private bool isAlive;
     private int coins;
-    private float score;
+    private int score;
+    private bool hasWon;
 
 
     #endregion
@@ -65,7 +72,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerPositionY = 1;
     private float startPosition;
     private float currentPosition;
-    private float distanceRun;
+    private int distanceRun;
 
     #endregion
 
@@ -171,14 +178,6 @@ public class PlayerController : MonoBehaviour
         rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Obstacle")
-        {
-            Debug.Log("You done fucked up");
-        }
-    }
-
     public void TakeDamage()
     {
         health--;
@@ -200,11 +199,11 @@ public class PlayerController : MonoBehaviour
 
     private void CalculateDistanceRun()
     {
-        distanceRun = startPosition + transform.position.x;
+        distanceRun = (int) (startPosition + transform.position.x);
     }
 
     private void CalculateScore()
     {
-        score = coins + (distanceRun / 4);
+        score = (int) (coins + (distanceRun / 4));
     }
 }

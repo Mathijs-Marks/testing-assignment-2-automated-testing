@@ -19,7 +19,7 @@ public class MovingObstacleController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Get the obstacle's current position.
         newPosition = transform.position;
