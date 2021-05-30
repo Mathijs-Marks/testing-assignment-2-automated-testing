@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private float moveSpeed; // Floating point variable to store the player's movement speed.
     [SerializeField] private float jumpPower = 5f;
-    [SerializeField] private float moveDistance = 1;
+    [SerializeField] private float moveDistance = 1f;
     [SerializeField] private int playerPositionZ = 1;
     [SerializeField] private int playerPositionY = 1;
 
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerPositionZ > 0)
         {
-            // Move the player along the positive Z axis.
+            // Move the player along the negative Z axis.
             transform.Translate(0, 0, -moveDistance);
             // Decrement the player position.
             playerPositionZ--;

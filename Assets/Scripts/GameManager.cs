@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool timerIsRunning = false;
 
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject gameInformation;
 
     // Start is called before the first frame update
     void Start()
